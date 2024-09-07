@@ -57,7 +57,7 @@ const validatePost = (req, res, next) => {
 };
 
 const validateUpdatePost = (req, res, next) => {
-    const { error } = UpdatePostSchema.validate(req.body);
+    const { error } = updatePostSchema.validate(req.body);
     if (error) {
         return res.status(400).json({ error: error.details[0].message });
     }
