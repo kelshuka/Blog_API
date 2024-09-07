@@ -8,7 +8,20 @@ const LocalStrategy = require('passport-local').Strategy;
 const cors = require('cors');
 
 app.use(passport.initialize());
-app.use(cors());
+
+const corsOptions = {
+  origin: 'http://localhost:5173',  // After production: origin: ['http://localhost:5173', 'https://your-production-frontend.com'],  
+  // i.e both local and production origins
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+  credentials: true,  // Include credentials
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Allow specific headers
+  optionsSuccessStatus: 200
+};
+
+//app.use(cors());
+app.use(cors(corsOptions));
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
