@@ -96,13 +96,13 @@ const signupSchema = Joi.object({
 const postSchema = Joi.object({
     title: Joi.string().min(3).max(80).required(),
     text: Joi.string().min(3).required(),
-    isPublished: Joi.string().boolean().optional()
+    isPublished: Joi.boolean().optional()
 });
 
 const updatePostSchema = Joi.object({
     title: Joi.string().min(3).max(80).required(),
     text: Joi.string().min(3).required(),
-    isPublished: Joi.string().boolean().optional()
+    isPublished: Joi.boolean().optional()
 });
 
 const commentSchema = Joi.object({
