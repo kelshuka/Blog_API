@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "postinstall": "prisma generate",
+    "start": "node app.js",
+    "postinstall": "npm run migrate",
     "migrate": "prisma migrate deploy"
   },
   "keywords": [],
