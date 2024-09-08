@@ -29,12 +29,6 @@ const loginPost = [
     validations.validateLogin,
     
     async (req, res, next) => {
-
-        await db.signUp(req.body);
-
-        //const user = await db.getUserByUsername(req.body.username);
-
-        //Authenticate the user immdeiately after sign up
         passport.authenticate('local', { session: false}, (err, user, info) => {
             if (err) {
                 return next(err); // Handle errors from passport.
@@ -45,7 +39,7 @@ const loginPost = [
             }
 
             // Log the user in
-            const token = jwt(
+            const token = jwt.sign(
                 { id: user.id, username: user.username, type: user.type },
                 process.env.JWT_SECRET,
                 { expiresIn: '2 days'}

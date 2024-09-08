@@ -9,17 +9,17 @@ const cors = require('cors');
 
 app.use(passport.initialize());
 
-const corsOptions = {
+/* const corsOptions = {
   origin: 'http://localhost:5173',  // After production: origin: ['http://localhost:5173', 'https://your-production-frontend.com'],  
   // i.e both local and production origins
   methods: ['GET', 'POST', 'PATCH', 'DELETE'],
   credentials: true,  // Include credentials
   allowedHeaders: ['Content-Type', 'Authorization'],  // Allow specific headers
   optionsSuccessStatus: 200
-};
+}; */
 
-//app.use(cors());
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
+app.use(cors());
 
 
 app.use(express.json());
