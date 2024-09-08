@@ -75,7 +75,7 @@ async function createPost(title, text, authorId){
         console.log("Post inserted correctly in db:", post);
         return post;
     } catch (error) {
-        console.error('Error creating post', error);
+        console.error('Error creating post', error.message);
         throw error;
     }
 }

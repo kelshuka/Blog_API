@@ -26,6 +26,7 @@ const postPosts = [
 
     async (req, res) => {
         try {
+            console.log("req.token.id:", req.token.id);
             await db.createPost(req.body.title, req.body.text, req.token.id);
             res.json({ message: 'Post created in db' });
         } catch (error){
