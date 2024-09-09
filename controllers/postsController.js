@@ -2,7 +2,7 @@ require("dotenv").config();
 const db = require("../db/queries");
 const validations = require('../middleware/helpers');
 
-const parseEditPost = require('../middleware/editPost');
+const editPost = require('../middleware/editPost');
 
 
 const getPosts = [
@@ -58,7 +58,7 @@ const updateAPost = [
 
     async (req, res) => {
         const postId = req.params.postId;
-        const updateData = parseEditPost(req.body);
+        const updateData = editPost.parseEditPost(req.body);
         try {
             await db.updatePost(postId, updateData);
             res.json({  message: 'Post updated in db' });
