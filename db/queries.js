@@ -186,6 +186,18 @@ async function deleteComment(commentId){
 }
 
 
+async function makeAdmin(username){
+    try{
+        const user = await prisma.user.update({
+            where: { username: username },
+            data: { type: 'Admin' }
+        });
+        return user;
+    } catch(error) {
+        console.error('Error updating user role:', error);
+        throw error;
+    }
+}
 
 
 
@@ -201,5 +213,6 @@ module.exports = {
     getCommentsOfPost,
     createComment,
     updateComment,
-    deleteComment
+    deleteComment,
+    makeAdmin
 };

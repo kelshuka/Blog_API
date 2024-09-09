@@ -1,5 +1,6 @@
 require("dotenv").config();
 const Joi  = require('joi');
+const jwt = require('jsonwebtoken');
 
 
 

@@ -59,11 +59,25 @@ const logOutGet = async (req, res, next) => {
 };
 
 
+// Make an Admin
+const makeAdmin = async (req, res) => {
+    const { username } = req.body;
+    try {
+        await db.makeAdmin(username);
+        res.json({ message: `${username} is now an Admin` });
+    } catch (error){
+        console.error('Error updating user role:', error);
+        res.status(500).json({ error: 'Error updating user role' });
+    } 
+}
+
+
 
 
 module.exports = {
     createNewUserPost,
     loginPost,
-    logOutGet
+    logOutGet,
+    makeAdmin
 };
 
