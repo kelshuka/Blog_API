@@ -1,14 +1,14 @@
 
-function parseEditPost(data){
+function parseEditPost(formBody){
     const updatedData = {};
-    if (data.title){
-        updatedData.title = data.title;
+    if (formBody.title){
+        updatedData.title = formBody.title;
     }
-    if (data.text){
-        updatedData.text = data.text;
+    if (formBody.text){
+        updatedData.text = formBody.text;
     }
-    if (data.isPublished){
-        const isPub = data.isPublished == 'true' ? true : false;
+    if (formBody.isPublished){
+        const isPub = formBody.isPublished == 'true' ? true : false;
         updatedData.isPublished = isPub;
         updatedData.createdAt = new Date();
     }

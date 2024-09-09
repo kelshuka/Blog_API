@@ -2,7 +2,7 @@ require("dotenv").config();
 const db = require("../db/queries");
 const validations = require('../middleware/helpers');
 
-const editPost = require('../middleware/editPost');
+//const editPost = require('../middleware/editPost');
 
 
 const getPosts = [
@@ -58,7 +58,7 @@ const updateAPost = [
 
     async (req, res) => {
         const postId = req.params.postId;
-        const updateData = editPost.parseEditPost(req.body);
+        const updateData = parseEditPost(req.body);
         try {
             await db.updatePost(postId, updateData);
             res.json({  message: 'Post updated in db' });
@@ -85,7 +85,22 @@ const deleteAPost = [
     },
 ];
 
-
+// Util
+function parseEditPost(formBody){
+    const updatedData = {};
+    if (formBody.title){
+        updatedData.title = formBody.title;
+    }
+    if (formBody.text){
+        updatedData.text = formBody.text;
+    }
+    if (formBody.isPublished){
+        const isPub = formBody.isPublished == 'true' ? true : false;
+        updatedData.isPublished = isPub;
+        updatedData.createdAt = new Date();
+    }
+    return updatedData;
+}
 
 
 module.exports = {
