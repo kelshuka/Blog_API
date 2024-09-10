@@ -15,7 +15,7 @@ const createNewUserPost = [
     async (req, res, next) => {
         try {
             await db.signUp(req.body);
-            res.redirect("/sign-up")
+            //res.redirect("/sign-up")
         } catch (error){
             console.error("Error creating an account", error);
             return res.status(500).json({ errorMsg: 'Error creating account.', error });
@@ -57,7 +57,7 @@ const logOutGet = async (req, res, next) => {
         if (err) {
             return next(err);
         }
-        res.redirect("/");
+        //res.redirect("/");
     });
 };
 
