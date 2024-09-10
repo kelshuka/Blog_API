@@ -62,7 +62,6 @@ const getAPostComments = [
 
 const updateAComment = [
     validations.verifyToken,
-    validations.verifyAdmin,
     validations.validateUpdateComment,
 
     async (req, res) => {
@@ -79,7 +78,6 @@ const updateAComment = [
 
 const deleteAComment = [
     validations.verifyToken,
-    validations.verifyAdmin,
 
     async (req, res) => {
         const commentId = req.params.commentId;
