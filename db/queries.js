@@ -114,7 +114,11 @@ async function deletePost(postId){
 // CRUD functions for comments
 async function getAllComments(){
     try{
-        const comments = await prisma.comment.findMany();
+        const comments = await prisma.comment.findMany({
+            include: {
+                commenter: true
+            }
+        });
         return comments;
     } catch(error) {
         console.error('Error fetching comments', error);
