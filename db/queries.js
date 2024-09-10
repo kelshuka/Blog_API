@@ -161,15 +161,15 @@ async function updateComment( commentId, text){
             where: {
                 id: commentId
             },
-            data: {
-                text: text,
-                createdAt: new Date(),
+            data: { text },
+            include: {
+                commenter: true
             }
         });
         return updatedComment;
         
     } catch(error) {
-        console.error('Error updating post', error);
+        console.error('Error updating comment', error);
         throw error;
     }
 }
