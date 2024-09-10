@@ -134,7 +134,7 @@ async function getCommentsOfPost(postId){
     }
 }
 
-async function createComment(commenterId, text, parentId){
+async function createComment( text, commenterId, parentId){
     try {
         
         const comment = await prisma.comment.create({

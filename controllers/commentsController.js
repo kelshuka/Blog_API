@@ -24,11 +24,18 @@ const postComments = [
     validations.validateComment,
 
     async (req, res) => {
-        const postId = req.params.postId;
-        const userId = req.token.id;
+        /* const postId = req.params.postId;*/
+        const { text, parentId } = req.body;
+        const commenterId = req.token.id;
+
+        // Ensure parentId is provided
+        if (!parentId) {
+            return res.status(400).json({ error: 'Post ID (parentId) is required' });
+        }
+
         try {
-            const comment = await db.createComment(userId, req.body.text, postId);
-            res.json({ message: 'Comment created in db', comment: comment });
+            const comment = await db.createComment( text, commenterId, parentId);
+            res.status(201).json(comment);
         } catch (error){
             console.error("Error creating comment", error);
             return res.status(500).json({ error: 'Error creating comment'});
