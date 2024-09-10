@@ -126,6 +126,9 @@ async function getCommentsOfPost(postId){
     try{
         const comments = await prisma.comment.findMany({
             where: {parentId: postId},
+            include: {
+                commenter: true
+            }
         });
         return comments;
     } catch(error) {
