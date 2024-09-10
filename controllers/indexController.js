@@ -44,7 +44,10 @@ const loginPost = [
                 process.env.JWT_SECRET,
                 { expiresIn: '2 days'}
             );
-            return res.json({ token: token, type: user.type });
+            return res.json({ 
+                token, 
+                user: {id: user.id, type: user.type }
+            });
         })(req, res, next);
     },
 ];
