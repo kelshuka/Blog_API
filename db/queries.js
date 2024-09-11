@@ -42,7 +42,11 @@ async function signUp(signer) {
 
 async function getAllPosts(){
     try{
-        const posts = await prisma.post.findMany();
+        const posts = await prisma.post.findMany({
+            include: {
+                author: true
+            }
+        });
         return posts;
     } catch(error) {
         console.error('Error fetching posts', error);
@@ -54,6 +58,9 @@ async function getPostById(postId){
     try{
         const post = await prisma.post.findUnique({
             where: {id: postId},
+            include: {
+                author: true
+            }
         });
         return post;
     } catch(error) {
