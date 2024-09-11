@@ -8,4 +8,4 @@ This is the second part, a React front-end, which gives the admin sole authoriza
 The source code can be found at [Blog_Admin](https://github.com/kelshuka/Blog_Admin.git).
 
 # Client
-This is the users front-end, built with React. Users can perform CRUD on their respective comments. The source code can be found at [Blog_Users]
+This is the users front-end, built with React. Users can perform CRUD on their respective comments. The source code can be found at [Blog_Users](https://github.com/kelshuka/Blog_Users.git)
